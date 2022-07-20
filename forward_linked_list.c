@@ -12,6 +12,7 @@ node* head;
 void Insert(int data);
 void Print();
 void Delete(int n);
+node* Reverse(node* head);
 
 //void Insert(int data, int n);
 //node* Insert(node *head, int X);
@@ -58,10 +59,11 @@ int main(){
     Insert(4);
     Insert(5);
     Print();
-    int n;
+    /*int n; 
     printf("Enter a position to delete\n");
     scanf("%d",&n);
-    Delete(n);
+    Delete(n);*/
+    head = Reverse(head);
     Print();
 }
 
@@ -137,4 +139,22 @@ void Delete(int n)
     node* temp2 = temp1->link; // nth Node to be deleted
     temp1->link = temp2->link; //linking (N-1)th Node and (n+1)th Node
     free(temp2); //  deleting Nth Node
+}
+
+/*This function Reverse explain itself, it saves the position of next node in next and reverse the link between current and prev.
+Than it goes to the next node and repeat the process to reverse the list*/
+node* Reverse(node* head)
+{
+    node *current, *prev,*next;
+    current = head;
+    prev=NULL;
+    while(current != NULL)
+    {
+        next = current->link;
+        current->link = prev;
+        prev = current;
+        current = next;
+    }
+    head = prev;
+    return head;
 }
