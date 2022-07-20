@@ -13,7 +13,7 @@ node* Insert(node *head, int X);
 void Print(node * head);
 
 int main(){
-    struct Node *head = NULL;
+    node *head = NULL;
     printf("How many elements you need?\n");
     int n,i,x;
     scanf("%d",&n);
@@ -26,16 +26,16 @@ int main(){
     }
 }
 
-struct Node* Insert(struct Node* head, int x)
+node* Insert(node* head, int x)
 {
-    struct Node* temp = (struct Node*)malloc(sizeof(node));
+    node* temp = (node*)malloc(sizeof(node));
     temp->data = x;
     temp->link = NULL;
     if(head != NULL) temp->link = head;
     head = temp;
     return head;
 }
-void Print(struct Node * head){
+void Print(node * head){
     
     printf("The list is:");
     while(head != NULL)
